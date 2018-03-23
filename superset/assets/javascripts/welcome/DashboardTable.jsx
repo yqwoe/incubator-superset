@@ -28,6 +28,7 @@ export default class DashboardTable extends React.PureComponent {
       this.setState({ dashboards: data.result });
     });
   }
+  
   render() {
     if (this.state.dashboards) {
       return (
@@ -39,9 +40,9 @@ export default class DashboardTable extends React.PureComponent {
           itemsPerPage={50}
           hideFilterInput
           columns={[
-            { key: 'dashboard', label: 'Dashboard' },
-            { key: 'creator', label: 'Creator' },
-            { key: 'modified', label: 'Modified' },
+            { key: 'dashboard', label: '看板' },
+            { key: 'creator', label: '创建人' },
+            { key: 'modified', label: '修改时间' },
           ]}
           defaultSort={{ column: 'modified', direction: 'desc' }}
         >
@@ -53,7 +54,7 @@ export default class DashboardTable extends React.PureComponent {
               <Td column="creator" value={o.changed_by_name}>
                 {unsafe(o.creator)}
               </Td>
-              <Td column="modified" value={o.changed_on} className="text-muted">
+              <Td column="modified" value={o.changed_on } className="text-muted">
                 {unsafe(o.modified)}
               </Td>
             </Tr>))}

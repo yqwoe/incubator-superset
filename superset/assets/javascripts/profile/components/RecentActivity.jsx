@@ -19,6 +19,7 @@ export default class RecentActivity extends React.PureComponent {
         _time: row.time,
       }));
     };
+    console.log(this.props)
     return (
       <div>
         <TableLoader

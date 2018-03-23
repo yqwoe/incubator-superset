@@ -2,6 +2,8 @@
 import $ from 'jquery';
 
 const utils = require('./modules/utils');
+const moment = require('moment')
+moment.locale('zh_CN');
 
 $(document).ready(function () {
   $(':checkbox[data-checkbox-api-prefix]').change(function () {
@@ -28,5 +30,6 @@ export function appSetup() {
   // this allows for the server side generated menus to function
   window.$ = $;
   window.jQuery = $;
+  window.moment = moment;
   require('bootstrap');
 }

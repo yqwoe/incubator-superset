@@ -25,10 +25,10 @@ export default class App extends React.PureComponent {
     return (
       <div className="container welcome">
         <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-          <Tab eventKey={1} title={t('Dashboards')}>
+          <Tab eventKey={1} title={t('看板')}>
             <Panel>
               <Row>
-                <Col md={8}><h2>{t('Dashboards')}</h2></Col>
+                <Col md={8}><h2>{t('看板')}</h2></Col>
                 <Col md={4}>
                   <FormControl
                     type="text"
@@ -44,19 +44,19 @@ export default class App extends React.PureComponent {
               <DashboardTable search={this.state.search} />
             </Panel>
           </Tab>
-          <Tab eventKey={2} title={t('Recently Viewed')}>
+          <Tab eventKey={2} title={t('最近浏览')}>
             <Panel>
               <Row>
-                <Col md={8}><h2>{t('Recently Viewed')}</h2></Col>
+                <Col md={8}><h2>{t('最近浏览')}</h2></Col>
               </Row>
               <hr />
               <RecentActivity user={this.props.user} />
             </Panel>
           </Tab>
-          <Tab eventKey={3} title={t('Favorites')}>
+          <Tab eventKey={3} title={t('收藏夹')}>
             <Panel>
               <Row>
-                <Col md={8}><h2>{t('Favorites')}</h2></Col>
+                <Col md={8}><h2>{t('收藏夹')}</h2></Col>
               </Row>
               <hr />
               <Favorites user={this.props.user} />

@@ -55,10 +55,10 @@ class CreatedContent extends React.PureComponent {
   render() {
     return (
       <div>
-        <h3>{t('Dashboards')}</h3>
+        <h3>{t('看板')}</h3>
         {this.renderDashboardTable()}
         <hr />
-        <h3>{t('Slices')}</h3>
+        <h3>{t('切片')}</h3>
         {this.renderSliceTable()}
       </div>
     );
