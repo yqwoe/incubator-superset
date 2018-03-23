@@ -9,6 +9,9 @@ import json
 import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
+os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
+
+
 
 from flask import Flask, redirect
 from flask_appbuilder import AppBuilder, IndexView, SQLA
@@ -20,6 +23,7 @@ from werkzeug.contrib.fixers import ProxyFix
 
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset import utils, config  # noqa
+
 
 APP_DIR = os.path.dirname(__file__)
 CONFIG_MODULE = os.environ.get('SUPERSET_CONFIG', 'superset.config')

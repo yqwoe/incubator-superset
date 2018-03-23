@@ -57,9 +57,9 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = '\2\1thisismyscretkey\1\2\e\y\y\h'  # noqa
 
 # The SQLAlchemy connection string.
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(DATA_DIR, 'superset.db')
-# SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
-# SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///data/superset.db' #+ os.path.join(DATA_DIR, 'superset.db')
+SQLALCHEMY_DATABASE_URI = 'mysql://root:123456@localhost/superset'
+# SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:123456@localhost:5432/myapp'
 
 # In order to hook up a custom password store for all SQLACHEMY connections
 # implement a function that takes a single argument of type 'sqla.engine.url',
@@ -106,7 +106,7 @@ APP_ICON = '/static/assets/images/superset-logo@2x.png'
 # See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 # other tz can be overridden by providing a local_config
 DRUID_IS_ACTIVE = True
-DRUID_TZ = tz.tzutc()
+DRUID_TZ = tz.gettz('Asia/Shanghai')
 DRUID_ANALYSIS_TYPES = ['cardinality']
 
 # ----------------------------------------------------
@@ -153,7 +153,7 @@ PUBLIC_ROLE_LIKE_GAMMA = False
 # Babel config for translations
 # ---------------------------------------------------
 # Setup default language
-BABEL_DEFAULT_LOCALE = 'en'
+BABEL_DEFAULT_LOCALE = 'zh'
 # Your application default translation path
 BABEL_DEFAULT_FOLDER = 'superset/translations'
 # The allowed translation for you app

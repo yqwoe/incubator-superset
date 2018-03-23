@@ -581,8 +581,13 @@ class PivotTableViz(BaseViz):
                 self.form_data.get('granularity') == 'all' and
                 DTTM_ALIAS in df):
             del df[DTTM_ALIAS]
+        groupby = self.form_data.get('groupby')
+        for index in range(len(groupby)):
+            print(type(groupby[index]))
+            groupby[index] = groupby[index].lower()
+        # fd['groupby'] = groupby
         df = df.pivot_table(
-            index=self.form_data.get('groupby'),
+            index=groupby,
             columns=self.form_data.get('columns'),
             values=self.form_data.get('metrics'),
             aggfunc=self.form_data.get('pandas_aggfunc'),
@@ -1050,6 +1055,16 @@ class NVD3TimeSeriesViz(NVD3Viz):
         if fd.get('granularity') == 'all':
             raise Exception(_('Pick a time granularity for your time series'))
 
+        print(fd.get('groupby'))
+
+        # TODO oracle groupby 字段大写匹配不到小写的数据
+        groupby = fd.get('groupby')
+        for index in range(len(groupby)):
+            print( type(groupby[index]))
+            groupby[index] = groupby[index].lower()
+        fd['groupby'] = groupby
+        # TODO end
+
         if not aggregate:
             df = df.pivot_table(
                 index=DTTM_ALIAS,
@@ -1360,7 +1375,14 @@ class DistributionBarViz(DistributionPieViz):
     def get_data(self, df):
         fd = self.form_data
 
-        row = df.groupby(self.groupby).sum()[self.metrics[0]].copy()
+
+        # TODO oracle groupby 字段大写匹配不到小写的数据
+        groupby_list = self.groupby
+        for index in range(len(groupby_list)):
+            groupby_list[index] = groupby_list[index].lower()
+        self.groupby = groupby_list
+
+        row = df.groupby(groupby_list).sum()[self.metrics[0]].copy()
         row.sort_values(ascending=False, inplace=True)
         columns = fd.get('columns') or []
         pt = df.pivot_table(

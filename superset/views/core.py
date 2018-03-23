@@ -1074,6 +1074,13 @@ class Superset(BaseSupersetView):
     def generate_json(self, datasource_type, datasource_id, form_data,
                       csv=False, query=False, force=False):
         try:
+            #TODO oracle groupby 字段大写匹配不到小写的数据
+            # groupby = form_data['groupby']
+            # for index in range(len(groupby)):
+            #     print( type(groupby[index]))
+            #     groupby[index] = groupby[index].lower()
+            # form_data['groupby'] = groupby
+            #TODO end
             viz_obj = self.get_viz(
                 datasource_type=datasource_type,
                 datasource_id=datasource_id,
