@@ -362,6 +362,14 @@ class OracleEngineSpec(PostgresBaseEngineSpec):
             """TO_TIMESTAMP('{}', 'YYYY-MM-DD"T"HH24:MI:SS.ff6')"""
         ).format(dttm.isoformat())
 
+    @classmethod
+    def format_column_name(cls, col_name):
+        return col_name.upper()
+
+    @classmethod
+    def get_table_names(cls, schema, inspector):
+        tables = inspector.get_table_names(schema)
+        return sorted(tables)
 
 class Db2EngineSpec(BaseEngineSpec):
     engine = 'ibm_db_sa'
